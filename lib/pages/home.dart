@@ -20,7 +20,21 @@ class _HomeState extends State<Home> {
       ),
       **/
       body: SafeArea( // SafeArea will push/move the child downward instead of occupying the entire appBar..
-          child: Text("Home Page")
+          child: Column(
+            children: [
+              TextButton.icon(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/location');
+                },
+                icon: Icon(Icons.edit_location),
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.green,
+                  padding: const EdgeInsets.all(16.0),
+                  textStyle: const TextStyle(fontSize: 20),
+                ), label: Text("Choose location."),
+              )
+            ],
+          )
       ),
     );
   }
