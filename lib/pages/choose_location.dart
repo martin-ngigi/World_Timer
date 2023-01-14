@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'dart:convert'; // imports jsonDecode
 
 //shortcut is "stful"
 class ChooseLocation extends StatefulWidget {
@@ -11,16 +13,13 @@ class ChooseLocation extends StatefulWidget {
 class _ChooseLocationState extends State<ChooseLocation> {
 
   //simulate network request for a username
-  void getData(){
-    Future.delayed(Duration(seconds: 3), (){
-      print("Its Martin 3.");
-    });
+  void getData() async{
+    Response response = await get(Uri.parse( "https://jsonplaceholder.typicode.com/todos/1"));
+    print(response.body); //un-decoded data
+    Map data = jsonDecode(response.body); //decoded data
+    print("\nDecoded data is: \n $data");
+    print("\nUserId : ${data['id']}    Title : ${data['title']}");
 
-    Future.delayed(Duration(seconds: 2), (){
-      print("Its Martin 2.");
-    });
-
-    print("statement.");
   }
 
   @override
