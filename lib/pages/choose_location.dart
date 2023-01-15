@@ -22,6 +22,22 @@ class _ChooseLocationState extends State<ChooseLocation> {
     WorldTime('Asia/Jakarta','Jakarta','indonesia.png'),
   ];
 
+  void updateTime(index) async {
+    WorldTime worldTime = locations[index];
+    await worldTime.getTime();
+
+    final data = {
+      'location': worldTime.location,
+      'flag': worldTime.flag,
+      'time': worldTime.time,
+      'isDayTime': worldTime.isDayTime
+    };
+
+    //navigate to home screen and pass the data to home screen
+    //pop to underneath page in the stack data strucker
+    Navigator.pop(context, data );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -46,7 +62,9 @@ class _ChooseLocationState extends State<ChooseLocation> {
               padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
               child: Card(
                 child: ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    updateTime(index);
+                  },
                   title: Text(locations[index].location),
                   leading: CircleAvatar(
                     backgroundImage: AssetImage('assets/${locations[index].flag}'),

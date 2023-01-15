@@ -9,13 +9,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  Map data ={};
+  var data ={};
 
   @override
   Widget build(BuildContext context) {
 
     //get data from loading page
-    final data = ModalRoute.of(context)?.settings.arguments as Map;// "as Map" will cast/convert the object to map
+    data = data.isNotEmpty? data : ModalRoute.of(context)?.settings.arguments as Map;// "as Map" will cast/convert the object to map
+    /**
+     * //above ternary expression the same as one below
+    if(data.isNotEmpty){
+        data = ModalRoute.of(context)?.settings.arguments as Map;// "as Map" will cast/convert the object to map
+    }
+        **/
+
     print(data);
 
     //set background
@@ -43,8 +50,17 @@ class _HomeState extends State<Home> {
             child: Column(
               children: [
                 TextButton.icon(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/location');
+                  onPressed: () async{
+                    dynamic result =  await Navigator.pushNamed(context, '/location');
+                    setState(() {
+                      //overriding the above data var to a new data result obtained from choose location
+                      data = {
+                        'time': result['time'],
+                        'location': result['location'],
+                        'isDaytime': result['isDaytime'],
+                        'flag': result['flag'],
+                      };
+                    });
                   },
                   icon: Icon(Icons.edit_location),
                   style: TextButton.styleFrom(
