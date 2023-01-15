@@ -11,7 +11,7 @@ class WorldTime{
   late bool isDayTime; //true or false for a day or night
 
   //constructor
-  WorldTime(this.location, this.flag, this.url);
+  WorldTime( this.url,this.location,  this.flag,);
 
   //simulate network request for time
   Future<void> getTime() async{
