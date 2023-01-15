@@ -19,7 +19,8 @@ class _HomeState extends State<Home> {
     print(data);
 
     //set background
-    String bgImage = data['isDayTime'] ? 'day.jpg': 'night.jpg'; // if bgImage is true then isDayTime='day.jpg', else isDayTime='night
+    String bgImage = data['isDayTime'] ? 'day.jpg': 'night.jpg'; // if isDayTime is true then isDayTime='day.jpg', else isDayTime='night
+    Color? bgColor = data['isDayTime'] ? Colors.grey[100]: Colors.grey[800]; // if isDayTime is true then bgColor=Colors.grey[200], else bgColor=Colors.grey[800]
 
     return Scaffold(
       /**
@@ -29,6 +30,7 @@ class _HomeState extends State<Home> {
         centerTitle: true,
       ),
       **/
+      backgroundColor: bgColor,
       body: SafeArea( // SafeArea will push/move the child downward instead of occupying the entire appBar..
           child: Container(
             padding: EdgeInsets.fromLTRB(0, 120, 0, 0),
