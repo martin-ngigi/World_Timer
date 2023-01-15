@@ -10,4 +10,14 @@ This project is a starting point for a Flutter application.
 - ![States](images/states.png)
 - 
 - ![Stateful Widgets](images/stateful_widgets.png)
-- 
+
+## dummy api
+- json placeholder -> https://jsonplaceholder.typicode.com/todos/1
+- response :
+
+            {
+            "userId": 1,
+            "id": 1,
+            "title": "delectus aut autem",
+            "completed": false
+            }
