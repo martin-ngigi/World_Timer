@@ -8,6 +8,7 @@ class WorldTime{
   late String time; //the time in that location
   late String flag; //Url to a an asset flag icon/image
   late String url; //url for api endpoint i.e. // http://worldtimeapi.org/api/timezone/Africa/Nairobi
+  late bool isDayTime; //true or false for a day or night
 
   //constructor
   WorldTime(this.location, this.flag, this.url);
@@ -30,6 +31,10 @@ class WorldTime{
       //create datetime object
       DateTime now = DateTime.parse(datetime);
       now = now.add(Duration(hours: int.parse(offset)));
+
+      //Ternary  operation
+      isDayTime = (now.hour>6 && now.hour< 20) ? true : false; // if condition is true, isDayTime=true, else isDayTime=false
+
 
       //set and formt the time property
       // time = now.toString();

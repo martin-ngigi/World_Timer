@@ -24,6 +24,7 @@ class _LoadingState extends State<Loading> {
       'location': worldTime.location,
       'flag': worldTime.flag,
       'time': worldTime.time,
+      'isDayTime': worldTime.isDayTime
     };
     Navigator.pushReplacementNamed(
       context,

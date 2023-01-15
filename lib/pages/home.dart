@@ -18,6 +18,9 @@ class _HomeState extends State<Home> {
     final data = ModalRoute.of(context)?.settings.arguments as Map;// "as Map" will cast/convert the object to map
     print(data);
 
+    //set background
+    String bgImage = data['isDayTime'] ? 'day.jpg': 'night.jpg'; // if bgImage is true then isDayTime='day.jpg', else isDayTime='night
+
     return Scaffold(
       /**
       appBar: AppBar(
@@ -29,6 +32,12 @@ class _HomeState extends State<Home> {
       body: SafeArea( // SafeArea will push/move the child downward instead of occupying the entire appBar..
           child: Container(
             padding: EdgeInsets.fromLTRB(0, 120, 0, 0),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/$bgImage'),
+                fit: BoxFit.cover // cover the entire screen
+              )
+            ),
             child: Column(
               children: [
                 TextButton.icon(
@@ -50,7 +59,8 @@ class _HomeState extends State<Home> {
                         data['location'],
                       style: TextStyle(
                         fontSize: 20,
-                        letterSpacing: 2
+                        letterSpacing: 2,
+                          color: Colors.grey[600]
                       ),
                     ),
                   ],
@@ -59,7 +69,8 @@ class _HomeState extends State<Home> {
                 Text(
                   data['time'],
                   style: TextStyle(
-                    fontSize: 60
+                    fontSize: 60,
+                    color: Colors.grey[400]
                   ),
                 )
               ],
