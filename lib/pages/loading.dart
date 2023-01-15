@@ -12,15 +12,30 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
 
-  String time = 'loading...';
 
   Future<void> setWorldTime() async {
     WorldTime worldTime = WorldTime("Kenya", "nairobi.png", "Africa/Nairobi");
     await worldTime.getTime();
-    print(worldTime.time);
-    setState(() {
-      time = worldTime.time;
-    });
+    //navigate to home page
+    // Navigator.pushNamed(context, '/home'); // this will add a stack below it
+
+    // Navigator.pushReplacementNamed(context, '/home', arguments: { // arguments are used to pass data from one route/page to another... we are passing data from loading page to home page
+    //   'location': worldTime..location,
+    //   'flag': worldTime..flag,
+    //   'time': worldTime..time,
+    // });
+
+    final data = {
+      'location': worldTime.location,
+      'flag': worldTime.flag,
+      'time': worldTime.time,
+    };
+    Navigator.pushReplacementNamed(
+      context,
+      '/home',
+      arguments: data,
+    );
+
   }
 
   @override
@@ -35,7 +50,7 @@ class _LoadingState extends State<Loading> {
       body: Container(
         padding: EdgeInsets.all(50),
         margin: EdgeInsets.all(5),
-        child: Text(time),
+        child: Text("loading..."),
       ),
     );
   }

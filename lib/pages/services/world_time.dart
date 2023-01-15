@@ -1,5 +1,6 @@
 import 'package:http/http.dart';
 import 'dart:convert'; // imports jsonDecode
+import 'package:intl/intl.dart';
 
 class WorldTime{
 
@@ -30,8 +31,9 @@ class WorldTime{
       DateTime now = DateTime.parse(datetime);
       now = now.add(Duration(hours: int.parse(offset)));
 
-      //set the time property
-      time = now.toString();
+      //set and formt the time property
+      // time = now.toString();
+      time = DateFormat.jm().format(now);
     }
     catch(e){
       print("Error: $e");

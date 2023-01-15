@@ -21,3 +21,14 @@ This project is a starting point for a Flutter application.
             "title": "delectus aut autem",
             "completed": false
             }
+
+-
+## Add http
+Run the following:
+
+      lutter pub add http
+
+## Add intl
+Run the following:
+
+      flutter pub add intl
