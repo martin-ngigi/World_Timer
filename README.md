@@ -32,3 +32,8 @@ Run the following:
 Run the following:
 
       flutter pub add intl
+
+## Add flutter_spinkit
+Run the following:
+
+      flutter pub add flutter_spinkit

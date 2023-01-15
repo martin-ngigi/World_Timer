@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:world_timer/pages/services/world_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 // stful
 class Loading extends StatefulWidget {
@@ -18,12 +19,6 @@ class _LoadingState extends State<Loading> {
     await worldTime.getTime();
     //navigate to home page
     // Navigator.pushNamed(context, '/home'); // this will add a stack below it
-
-    // Navigator.pushReplacementNamed(context, '/home', arguments: { // arguments are used to pass data from one route/page to another... we are passing data from loading page to home page
-    //   'location': worldTime..location,
-    //   'flag': worldTime..flag,
-    //   'time': worldTime..time,
-    // });
 
     final data = {
       'location': worldTime.location,
@@ -47,10 +42,16 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[700],
       body: Container(
         padding: EdgeInsets.all(50),
         margin: EdgeInsets.all(5),
-        child: Text("loading..."),
+        child: Center(
+          child:SpinKitWave(
+            color: Colors.white,
+            size: 80.0,
+          ),
+        ),
       ),
     );
   }
